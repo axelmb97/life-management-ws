@@ -17,9 +17,12 @@
     "strict": true,
     "target": "es2022",
     "paths": {
-      "@data-access/apis/billing-api": ["./libs/data-access/apis/billing-api/src/index.ts"],
+      "@data-access/apis/billing-api": [
+        "./libs/data-access/apis/billing-api/src/index.ts"
+      ],
       "@shared/features/auth": ["./libs/shared/features/auth/src/index.ts"],
-      "@billing/shell": ["./libs/billing/shell/src/index.ts"]
+      "@billing/shell": ["./libs/billing/shell/src/index.ts"],
+      "@shared/layouts": ["./libs/shared/layouts/src/index.ts"]
     }
   }
 }
