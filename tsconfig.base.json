@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "composite": false,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
     "importHelpers": true,
     "isolatedModules": true,
     "lib": ["es2022", "dom"],
