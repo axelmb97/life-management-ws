@@ -19,7 +19,7 @@
             "input": "apps/billing-app/public"
           }
         ],
-        "styles": ["apps/billing-app/src/styles.css"]
+        "styles": ["apps/billing-app/src/styles.scss"]
       },
       "configurations": {
         "production": {
