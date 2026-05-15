@@ -1,1 +1,1 @@
-export * from './lib/billing.routes';
+export * from './lib/billin.configs';

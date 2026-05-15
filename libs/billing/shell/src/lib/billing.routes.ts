@@ -8,6 +8,6 @@ export const billingRoutes: Routes = [
     path: BaseRoutes.Root, 
     component: AppMain
   },
-  {path: BaseRoutes.Login, component: Login},
-  {path: '**', redirectTo: BaseRoutes.Root},
+  { path: BaseRoutes.Login, component: Login },
+  { path: '**', redirectTo: BaseRoutes.Root },
 ];

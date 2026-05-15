@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation, computed, effect, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppFooter } from '../app-footer/app-footer';
 import { AppSidebar } from '../app-sidebar/app-sidebar';
 import { AppTopbar } from '../app-topbar/app-topbar';
 import { LayoutService } from '../services/layout.service';
 
 @Component({
   selector: 'app-main',
-  imports: [CommonModule, AppTopbar, AppSidebar, RouterModule, AppFooter],
+  imports: [CommonModule, AppTopbar, AppSidebar, RouterModule],
   templateUrl: './app-main.html',
   styleUrl: './app-main.css',
   encapsulation: ViewEncapsulation.None,
