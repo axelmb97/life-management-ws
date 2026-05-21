@@ -1,0 +1,1 @@
+export { WorksQuery } from './lib/works-query';

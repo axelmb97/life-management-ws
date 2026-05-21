@@ -28,7 +28,9 @@
       ],
       "@states/authentication": [
         "./libs/data-access/states/authentication/src/index.ts"
-      ]
+      ],
+      "@billing/features/works": ["./libs/billing/features/works/src/index.ts"],
+      "@billing/services/work-services": ["./libs/billing/services/works/src/index.ts"]
     }
   }
 }
