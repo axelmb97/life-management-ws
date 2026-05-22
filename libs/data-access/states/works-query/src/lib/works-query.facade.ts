@@ -1,7 +1,7 @@
 // import { WorksQueryService } from '@data-access/apis/billing-api';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { WorksBillingService } from '@data-access/apis/billing-api';
-import {  finalize, map, } from 'rxjs';
+import {  delay, finalize, map, } from 'rxjs';
 import { WorksQueryState } from './models/works-query-state.interface';
 import { WorkViewModelMapper } from './models/work-view-model.mapper';
 import { WorkViewModel } from './models/work-view-model';
@@ -41,6 +41,7 @@ export class WorksQueryFacade{
 
     this.worksBillingService.apiWorksGet(this.worksQueryState().filters)
     .pipe(
+      delay(3000),
       finalize(() =>  this.setIsLoading(false)),
       map((response) => response.map(c => WorkViewModelMapper.toModel(c)) ?? [] as WorkViewModel[]),
     )
@@ -48,6 +49,7 @@ export class WorksQueryFacade{
       next: (works: WorkViewModel[]) => {
         this.worksQueryState.update(state => ({
           ...state,
+          error: undefined,
           works: works,
         }));
       },

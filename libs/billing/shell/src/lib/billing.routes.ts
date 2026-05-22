@@ -1,8 +1,8 @@
 import { Routes } from "@angular/router";
-import { BaseRoutes } from "./enums/base-routes.enum";
+
 import { Login } from "@shared/features/auth";
 import { AppMain } from "@shared/layouts";
-import { WorksRoutes } from "./enums/works-routes.enum";
+import { BaseRoutes, WorksRoutes } from "@shared/models";
 import { WorksQuery } from "@billing/features/works";
 
 export const billingRoutes: Routes = [

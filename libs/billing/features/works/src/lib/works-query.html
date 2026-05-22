@@ -1,5 +1,7 @@
-<p>works-query works!</p>
+@if (worksQueryPageFacadeService.isLoading()) { 
+  <p>Cargando...</p>
+}
 
-@for (work of works(); track work.id) {
+@for (work of worksQueryPageFacadeService.works(); track work.id) {
   <p>{{ work.name }}</p>
 }

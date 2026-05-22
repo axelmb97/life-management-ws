@@ -15,7 +15,7 @@ export class AuthFacade {
         label: 'Features',
         items: [
           { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
-          { label: 'Trabajos', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+          { label: 'Trabajos', icon: 'pi pi-fw pi-home', routerLink: ['/works/query'] },
           { label: 'Documentos', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
         ]
       },

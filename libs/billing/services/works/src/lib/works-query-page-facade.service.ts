@@ -8,7 +8,9 @@ export class WorksQueryPageFacadeService{
   private readonly worksQueryFacade = inject(WorksQueryFacade);
   
   works = this.worksQueryFacade.works;
-
+  isLoading = this.worksQueryFacade.isLoading;
+  error = this.worksQueryFacade.error;
+  
   init(): void {
     this.worksQueryFacade.init();
 
