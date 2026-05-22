@@ -1,5 +1,5 @@
 @if (worksQueryPageFacadeService.isLoading()) { 
-  <p>Cargando...</p>
+  <app-loader></app-loader>
 }
 
 @for (work of worksQueryPageFacadeService.works(); track work.id) {

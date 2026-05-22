@@ -1,0 +1,1 @@
+export { AppLoader } from './lib/app-loader/app-loader';

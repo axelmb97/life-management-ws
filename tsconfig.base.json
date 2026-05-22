@@ -30,11 +30,12 @@
         "./libs/data-access/states/authentication/src/index.ts"
       ],
       "@billing/features/works": ["./libs/billing/features/works/src/index.ts"],
-      "@billing/services/work-services": [
+      "@billing/services/works": [
         "./libs/billing/services/works/src/index.ts"
       ],
       "@billing/models": ["./libs/billing/models/src/index.ts"],
-      "@shared/models": ["./libs/shared/models/src/index.ts"]
+      "@shared/models": ["./libs/shared/models/src/index.ts"],
+      "@shared/components": ["./libs/shared/components/src/index.ts"]
     }
   }
 }

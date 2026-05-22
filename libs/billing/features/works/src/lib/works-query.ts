@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { WorksQueryPageFacadeService } from '@billing/services/work-services';
+import { WorksQueryPageFacadeService } from '@billing/services/works';
+import { AppLoader } from '@shared/components';
 
 @Component({
-  selector: 'lib-works-query',
-  imports: [],
+  selector: 'billing-works-query',
+  imports: [AppLoader],
   providers: [WorksQueryPageFacadeService],
   templateUrl: './works-query.html',
   styleUrl: './works-query.css',
