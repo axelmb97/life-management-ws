@@ -1,0 +1,1 @@
+export { TableFiltersQueryParamHandlerService } from './lib/table-filters-query-param-handler.service'

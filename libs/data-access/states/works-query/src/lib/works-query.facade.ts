@@ -5,6 +5,9 @@ import {  delay, finalize, map, } from 'rxjs';
 import { WorksQueryState } from './models/works-query-state.interface';
 import { WorkViewModelMapper } from './models/work-view-model.mapper';
 import { WorkViewModel } from './models/work-view-model';
+import { PaginationHeadersViewModel } from '@shared/models';
+import { WorkFiltersViewModel } from './models/work-filters-view-model';
+import { WorkFiltersViewModelMapper } from './models/work-filters-view-model.mapper';
 
 @Injectable()
 export class WorksQueryFacade{
@@ -16,12 +19,16 @@ export class WorksQueryFacade{
     filters: { page: 1 },
     error: undefined,
     isLoading: false,
+    isLoaded: false,
+    pagination: undefined
   });
 
   readonly filters = computed(() => this.worksQueryState().filters);
   readonly works = computed(() => this.worksQueryState().works);
   readonly error = computed(() => this.worksQueryState().error);
   readonly isLoading = computed(() => this.worksQueryState().isLoading);
+  readonly isLoaded = computed(() => this.worksQueryState().isLoaded);
+  readonly pagination = computed(() => this.worksQueryState().pagination);
 
   init(): void {
     this.initState();
@@ -33,24 +40,38 @@ export class WorksQueryFacade{
       filters: { page: 1 },
       error: undefined,
       isLoading: false,
+      isLoaded: false,
+      pagination: undefined
     }));
   }
 
-  getWorksByFilters() : void {
+  getWorksByFilters(filters: WorkFiltersViewModel) : void {
     this.setIsLoading(true);
-
-    this.worksBillingService.apiWorksGet(this.worksQueryState().filters)
+    const domainFilters = WorkFiltersViewModelMapper.toDomain(filters);
+    
+    this.worksBillingService.apiWorksGet(domainFilters, 'response')
     .pipe(
       delay(3000),
       finalize(() =>  this.setIsLoading(false)),
-      map((response) => response.map(c => WorkViewModelMapper.toModel(c)) ?? [] as WorkViewModel[]),
+      map((response) => {
+        const header = response.headers.get('x-pagination');
+        const jsonObj: unknown = JSON.parse(header!);
+        const pagination: PaginationHeadersViewModel = <PaginationHeadersViewModel>jsonObj;
+
+        return {
+          works: response.body?.map(c => WorkViewModelMapper.toModel(c)) ?? [] as WorkViewModel[],
+          pagination: pagination
+        };
+      }),
     )
     .subscribe({
-      next: (works: WorkViewModel[]) => {
+      next: ({works, pagination}) => {
         this.worksQueryState.update(state => ({
           ...state,
           error: undefined,
           works: works,
+          pagination: pagination,
+          isLoaded: true,
         }));
       },
       error: (error) => {
@@ -58,6 +79,8 @@ export class WorksQueryFacade{
           ...state,
           works: [],
           error: error,
+          pagination: undefined,
+          isLoaded: false
         }));
       },
     });
@@ -66,7 +89,7 @@ export class WorksQueryFacade{
   private setIsLoading(isLoading: boolean) {
     this.worksQueryState.update(state => ({
       ...state,
-      isLoading,
+      isLoading
     }));
   }
 

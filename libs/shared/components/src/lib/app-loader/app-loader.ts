@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-loader',
-  imports: [],
+  imports: [ProgressSpinnerModule],
   templateUrl: './app-loader.html',
   styleUrl: './app-loader.css',
 })
