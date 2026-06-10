@@ -5,4 +5,5 @@ export interface WorkFiltersViewModel {
   ids?: Array<string>;
   name?: string;
   observations?: string;
+  query?: string;
 }

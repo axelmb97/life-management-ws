@@ -8,6 +8,9 @@ export class WorkFiltersViewModelMapper {
       pageSize: filters.pageSize,
       order: filters.order,
       ids: filters.ids,
+      queryValue: filters.query,
+      name: filters.name,
+      observations: filters.observations,
     };
   }
 }

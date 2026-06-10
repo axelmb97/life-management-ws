@@ -32,11 +32,12 @@ export class WorksQueryPageFacadeService{
   search(event: TableLazyLoadEvent): void {
 
     const normalizedValues = this.tableFilterValuesService.getFixedFilters(event);
-    const filters: WorkFiltersViewModel = { 
+    const filters: WorkFiltersViewModel = {   
       page: normalizedValues['page'] != undefined ? parseInt(normalizedValues['page']) : 0,
       pageSize: normalizedValues['pageSize'] != undefined ? parseInt(normalizedValues['pageSize']) : 10, 
       name: normalizedValues['name'] , 
-      observations: normalizedValues['observations']
+      observations: normalizedValues['observations'],
+      query: normalizedValues['query']
     };
     
     this.worksQueryFacade.getWorksByFilters(filters);

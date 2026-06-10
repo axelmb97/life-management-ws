@@ -34,6 +34,11 @@ export class TableFiltersQueryParamHandlerService {
         params[key] = paramValue[0].value;
         return;
       }
+
+    if (key == "global" && !Array.isArray(paramValue) && paramValue?.value != null) {
+        params["query"] = paramValue?.value;
+        return;
+      }
       
       return;
       

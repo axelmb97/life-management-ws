@@ -35,14 +35,14 @@ export class WorksQueryFacade{
   }
 
   private initState() : void {
-    this.worksQueryState.update(() => ({
+    this.worksQueryState.set({
       works: [],
       filters: { page: 1 },
       error: undefined,
       isLoading: false,
       isLoaded: false,
       pagination: undefined
-    }));
+    });
   }
 
   getWorksByFilters(filters: WorkFiltersViewModel) : void {

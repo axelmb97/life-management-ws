@@ -13,6 +13,7 @@ import { Observable }                                        from 'rxjs';
 
 import { PatchWorkCommandBillingModel } from '../model/models';
 import { PostWorkCommandBillingModel } from '../model/models';
+import { ProblemDetailsBillingModel } from '../model/models';
 import { WorkDtoBillingModel } from '../model/models';
 
 
@@ -20,6 +21,9 @@ import { BillingConfiguration }                                     from '../con
 
 
 export interface ApiWorksGetRequestParams {
+    name?: string;
+    observations?: string;
+    queryValue?: string;
     page?: number;
     pageSize?: number;
     order?: string;

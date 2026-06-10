@@ -5,4 +5,4 @@ export * from './configuration';
 export * from './api.module';
 export * from './provide-api';
 export * from './param';
-export { provideBillingApi } from './provide-api-wrapper';
+export * from './provide-api-wrapper';
