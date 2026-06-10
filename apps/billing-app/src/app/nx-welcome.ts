@@ -1,9 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-nx-welcome',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, ButtonModule, DialogModule],
   template: `
     <!--
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -533,7 +536,9 @@ import { CommonModule } from '@angular/common';
                   d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
                 />
               </svg>
-              <span>You&apos;re up and running</span>
+              <span class="text-red-500">You&apos;re up and running</span>
+
+              
             </h2>
             <a href="#commands"> What&apos;s next? </a>
           </div>
@@ -613,7 +618,7 @@ import { CommonModule } from '@angular/common';
                 </svg>
                 <span>
                   Blog
-                  <span> Changelog, features & events </span>
+                  <span class="text-red-500"> Changelog, features & events </span>
                 </span>
                 <svg
                   fill="none"
@@ -946,8 +951,47 @@ nx g &#64;nx/angular:component ui/src/lib/button</pre>
         </p>
       </div>
     </div>
+
+    <section class="m-6 rounded-lg border border-gray-200 p-6">
+  <h2 class="mb-4 text-xl font-semibold">PrimeNG + Tailwind smoke test</h2>
+
+  <div class="mb-4 flex items-center gap-3">
+    <i class="pi pi-check-circle text-2xl text-green-500"></i>
+    <span>PrimeIcons rendering check</span>
+  </div>
+
+  <p-button
+    label="Open PrimeNG Dialog"
+    icon="pi pi-external-link"
+    (onClick)="openDialog()"
+  />
+
+  <p-dialog
+    header="PrimeNG dialog test"
+    [modal]="true"
+    [(visible)]="isDialogVisible"
+    [style]="{ width: '28rem' }"
+    (onHide)="closeDialog()"
+  >
+    <div class="flex items-center gap-2">
+      <i class="pi pi-bolt text-yellow-500"></i>
+      <span>Dialog is working correctly.</span>
+    </div>
+  </p-dialog>
+</section>
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class NxWelcome {}
+export class NxWelcome {
+  protected isDialogVisible = false;
+
+  protected openDialog(): void {
+    this.isDialogVisible = true;
+  }
+
+  protected closeDialog(): void {
+    this.isDialogVisible = false;
+  }
+
+}

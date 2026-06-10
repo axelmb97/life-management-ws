@@ -1,0 +1,15 @@
+import { EnvironmentProviders, makeEnvironmentProviders } from "@angular/core";
+import { provideRouter } from "@angular/router";
+import { provideAuthentication } from "@states/authentication";
+import { billingRoutes } from "./billing.routes";
+import { provideWorksQueryState } from "@states/works-query";
+
+export function provideBillingApp() : EnvironmentProviders {
+  return makeEnvironmentProviders([
+    provideRouter(billingRoutes),
+
+    // States
+    provideAuthentication(),
+    provideWorksQueryState()
+  ]);
+}

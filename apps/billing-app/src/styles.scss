@@ -1,0 +1,9 @@
+@use "../../../libs/shared/layouts/src/lib/styles/layout";
+
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+
+@source "../../../apps/billing-app/src";
+@source "../../../libs";
+
+@plugin "tailwindcss-primeui";

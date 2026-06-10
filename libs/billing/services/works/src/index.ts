@@ -1,0 +1,1 @@
+export { WorksQueryPageFacadeService } from './lib/works-query-page-facade.service';

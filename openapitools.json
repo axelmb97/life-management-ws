@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.19.0",
+    "generators": {
+      "billing-api": {
+        "generatorName": "typescript-angular",
+        "inputSpec": "./libs/data-access/apis/billing-api/src/lib/configs/swagger.json",
+        "output": "./libs/data-access/apis/billing-api/src/lib",
+        "additionalProperties": {
+          "ngVersion": "21.0.0",
+          "npmName": "@data-access/apis/billing-api",
+          "modelSuffix": "BillingModel",
+          "serviceSuffix": "BillingService",
+          "apiModulePrefix": "Billing",
+          "configurationPrefix": "Billing",
+          "providedInRoot": true,
+          "withInterfaces": true,
+          "stringEnums": true,
+          "useSingleRequestParameter": true,
+          "removeExistingFiles": true
+        }
+      }
+    }
+  }
+}
