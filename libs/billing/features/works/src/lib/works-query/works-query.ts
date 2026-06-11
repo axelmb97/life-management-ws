@@ -15,6 +15,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { MenuItem } from 'primeng/api';
 import { JsonPipe } from '@angular/common';
+import { WorksRoutes } from '@shared/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'billing-works-query',
@@ -24,7 +26,8 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './works-query.css',
 })
 export class WorksQuery implements OnInit{
-  worksQueryPageFacadeService = inject(WorksQueryPageFacadeService);
+  readonly worksQueryPageFacadeService = inject(WorksQueryPageFacadeService);
+  private readonly router = inject(Router);
 
   colsToShow: any[] = [
     { field: 'name', header: 'Nombre' },
@@ -46,7 +49,10 @@ export class WorksQuery implements OnInit{
     return pagination?.total ?? 0;
   }
 
-  navigateToCreation(): void {}
+  navigateToCreation(): void {
+    const route =  `${WorksRoutes.Root}/${WorksRoutes.Add}`;
+    this.router.navigate([route]);
+  }
 
   generateMenu(item: WorkViewModel, menu: Menu, event: Event): void {
     menu.toggle(event);

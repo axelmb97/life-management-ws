@@ -1,0 +1,49 @@
+@if (worksNewPageFacade.isLoading()) {
+  <app-loader></app-loader>
+}
+
+
+<div class="card">
+  <div class="flex justify-center">
+    <h2 class="text-2xl">Registrar Trabajo</h2>
+  </div>
+
+  <span> {{  worksNewPageFacade.form().value| json }}</span>
+  <form [formGroup]="worksNewPageFacade.form()" (ngSubmit)="worksNewPageFacade.save()">
+    <div class="flex flex-col gap-6">
+      <div>
+          <label for="name" class="block font-bold mb-3">Nombre</label>
+          <input type="text" pInputText id="name" formControlName="name"  required fluid />
+          <!-- <small class="text-red-500" *ngIf="submitted && !product.name">Name is required.</small> -->
+      </div>
+
+      <div>
+          <label for="observations" class="block font-bold mb-3">Observaciones</label>
+          <textarea id="observations" pTextarea formControlName="observations" required rows="3" cols="20" fluid></textarea>
+      </div>
+
+      <div class="flex justify-between align-items-center">
+        <div>
+          <button 
+          pButton pRipple type="button"
+          label="Cancelar" class="p-button-text"
+          (click)="goBack()">
+        </button>
+        </div>
+         
+        <div>
+          <button 
+            pButton 
+            pRipple 
+            type="submit"
+            label="Guardar" 
+            class="p-button-success">
+          </button>
+        </div>
+        
+      </div>
+    
+    </div>
+  </form>
+</div>
+

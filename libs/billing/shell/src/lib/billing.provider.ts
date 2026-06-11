@@ -3,6 +3,7 @@ import { provideRouter } from "@angular/router";
 import { provideAuthentication } from "@states/authentication";
 import { billingRoutes } from "./billing.routes";
 import { provideWorksQueryState } from "@states/works-query";
+import { provideWorksNewState } from "@states/works-new";
 
 export function provideBillingApp() : EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -10,6 +11,7 @@ export function provideBillingApp() : EnvironmentProviders {
 
     // States
     provideAuthentication(),
-    provideWorksQueryState()
+    provideWorksQueryState(),
+    provideWorksNewState()
   ]);
 }
