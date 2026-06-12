@@ -19,7 +19,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { Router } from '@angular/router';
 import { WorksRoutes } from '@shared/models';
-import { AppLoader } from '@shared/components';
+import { AppInputFormError, AppLoader } from '@shared/components';
 
 @Component({
   selector: 'billing-works-new',
@@ -43,7 +43,8 @@ import { AppLoader } from '@shared/components';
     ConfirmDialogModule,
     ReactiveFormsModule,
     JsonPipe,
-    AppLoader
+    AppLoader,
+    AppInputFormError
   ],
   templateUrl: './works-new.html',
   styleUrl: './works-new.css',

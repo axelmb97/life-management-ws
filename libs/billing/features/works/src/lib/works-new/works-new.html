@@ -14,12 +14,19 @@
       <div>
           <label for="name" class="block font-bold mb-3">Nombre</label>
           <input type="text" pInputText id="name" formControlName="name"  required fluid />
-          <!-- <small class="text-red-500" *ngIf="submitted && !product.name">Name is required.</small> -->
+          <app-input-form-error
+            [control]="worksNewPageFacade.form().controls.name"
+            [messages]="worksNewPageFacade.formErrors()['name']"
+          ></app-input-form-error>
       </div>
 
       <div>
           <label for="observations" class="block font-bold mb-3">Observaciones</label>
           <textarea id="observations" pTextarea formControlName="observations" required rows="3" cols="20" fluid></textarea>
+          <app-input-form-error
+            [control]="worksNewPageFacade.form().controls.observations"
+            [messages]="worksNewPageFacade.formErrors()['observations']"
+          ></app-input-form-error>
       </div>
 
       <div class="flex justify-between align-items-center">
@@ -37,7 +44,8 @@
             pRipple 
             type="submit"
             label="Guardar" 
-            class="p-button-success">
+            class="p-button-success"
+            [disabled]="worksNewPageFacade.form().invalid">
           </button>
         </div>
         

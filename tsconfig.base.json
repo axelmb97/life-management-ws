@@ -35,7 +35,8 @@
       "@shared/models": ["./libs/shared/models/src/index.ts"],
       "@shared/components": ["./libs/shared/components/src/index.ts"],
       "@shared/services": ["./libs/shared/services/src/index.ts"],
-      "@states/works-new": ["./libs/data-access/states/works-new/src/index.ts"]
+      "@states/works-new": ["./libs/data-access/states/works-new/src/index.ts"],
+      "@data-access/models": ["./libs/data-access/models/src/index.ts"]
     }
   }
 }

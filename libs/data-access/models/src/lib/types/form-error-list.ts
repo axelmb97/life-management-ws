@@ -1,0 +1,1 @@
+export type FormErrorList = Record<string, string | ((error: unknown) => string)>;

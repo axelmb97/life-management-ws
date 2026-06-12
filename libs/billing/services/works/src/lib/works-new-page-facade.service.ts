@@ -10,6 +10,7 @@ export class WorksNewPageFacadeService implements OnDestroy {
   readonly error = this.worksNewFacade.error;
   readonly success = this.worksNewFacade.success;
   readonly form = this.worksNewFacade.form;
+  readonly formErrors = this.worksNewFacade.formErrors;
 
   init() : void {
     this.worksNewFacade.init();

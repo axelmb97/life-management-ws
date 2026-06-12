@@ -2,25 +2,24 @@ import { computed, inject, Injectable, signal } from "@angular/core";
 import { WorksBillingService } from "@data-access/apis/billing-api";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { finalize } from "rxjs";
-import { WorkNewForm, WorksNewState, WorksNewFormMapper } from "./models";
+import {  WorksNewState, WorksNewFormMapper, WorkNewForm } from "./models";
+import { FormErrorList } from "@data-access/models";
 
 @Injectable()
 export class WorksNewFacade {
   private readonly worksBillingService = inject(WorksBillingService);
   private readonly builder = inject(FormBuilder);
-  private readonly formInitialization: FormGroup<WorkNewForm> = this.builder.group({
-    name: ["", [Validators.required]],
-    observations: ["", [Validators.required]]
-  });
 
   private readonly worksNewState = signal<WorksNewState>({
     isLoading: false,
     error: undefined,
     success: false,
-    form: this.formInitialization
+    form: this.buildForm(),
+    formErros: this.buildFormErrors()
   });
 
   readonly form = computed(() => this.worksNewState().form);
+  readonly formErrors = computed(() => this.worksNewState().formErros);
   readonly isLoading = computed(() => this.worksNewState().isLoading);
   readonly error = computed(() => this.worksNewState().error);
   readonly success = computed(() => this.worksNewState().success);
@@ -34,7 +33,30 @@ export class WorksNewFacade {
       isLoading: false,
       error: undefined,
       success: false,
-      form: this.formInitialization
+      form: this.buildForm(),
+      formErros: this.buildFormErrors()
+    });
+  }
+
+  private buildFormErrors(): Record<string, FormErrorList> {
+    return {
+      name: {
+        required: 'El nombre es obligatorio',
+        minlength: 'El nombre debe tener al meno 3 caracteres',
+        maxlength: 'El nombre no puede tener mas de 50 caracteres'
+      },
+      observations: {
+        required: 'La observación es obligatoria',
+        minlength: 'La observación debe tener al menos 3 caracteres',
+        maxlength: 'La observación no puede tener mas de 100 caracteres'
+      }
+    };
+  }
+
+  private buildForm() : FormGroup<WorkNewForm> {
+    return this.builder.group({
+      name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      observations: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(100)]]
     });
   }
 
