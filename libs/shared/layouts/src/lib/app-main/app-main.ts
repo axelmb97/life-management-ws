@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { AppSidebar } from '../app-sidebar/app-sidebar';
 import { AppTopbar } from '../app-topbar/app-topbar';
 import { LayoutService } from '../services/layout.service';
+import { AppGlobalToast } from '@shared/components';
 
 @Component({
   selector: 'app-main',
-  imports: [CommonModule, AppTopbar, AppSidebar, RouterModule],
+  imports: [CommonModule, AppTopbar, AppSidebar, RouterModule, AppGlobalToast],
   templateUrl: './app-main.html',
   styleUrl: './app-main.css',
   encapsulation: ViewEncapsulation.None,

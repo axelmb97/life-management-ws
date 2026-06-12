@@ -1,5 +1,5 @@
 import { CommonModule, JsonPipe } from '@angular/common';
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorksNewPageFacadeService } from "@billing/services/works"
 import { ButtonModule } from 'primeng/button';
@@ -17,8 +17,6 @@ import { TagModule } from 'primeng/tag';
 import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { Router } from '@angular/router';
-import { WorksRoutes } from '@shared/models';
 import { AppInputFormError, AppLoader } from '@shared/components';
 
 @Component({
@@ -42,7 +40,6 @@ import { AppInputFormError, AppLoader } from '@shared/components';
     IconFieldModule,
     ConfirmDialogModule,
     ReactiveFormsModule,
-    JsonPipe,
     AppLoader,
     AppInputFormError
   ],
@@ -52,26 +49,8 @@ import { AppInputFormError, AppLoader } from '@shared/components';
 })
 export class WorksNew implements OnInit{
   public readonly worksNewPageFacade  = inject(WorksNewPageFacadeService);
-  private readonly router = inject(Router);
-  
-  private readonly successEffect = this.buildSuccessEffect();
 
   ngOnInit(): void {
     this.worksNewPageFacade.init();
-  }
-
-  private buildSuccessEffect()  {
-    return effect(() => {
-      const isSuccess = this.worksNewPageFacade.success();
-
-      if (!isSuccess) return;
-
-      this.goBack();
-    });
-  }
-
-  goBack() : void {
-    const queryRoute = `${WorksRoutes.Root}/${WorksRoutes.Query}`;
-    this.router.navigate([queryRoute]);
   }
 }
