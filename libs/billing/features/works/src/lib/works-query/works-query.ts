@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, inject, OnInit } from '@angular/core';
 import { WorksQueryPageFacadeService } from '@billing/services/works';
-import { AppLoader } from '@shared/components';
-import { WorkViewModel } from '@states/works-query';
+import { WorkViewModel } from '@data-access/models';
 
 //PrimeNG
 import { TableModule } from 'primeng/table';
@@ -14,13 +13,12 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { MenuItem } from 'primeng/api';
-import { JsonPipe } from '@angular/common';
 import { WorksRoutes } from '@shared/models';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'billing-works-query',
-  imports: [AppLoader, JsonPipe, TableModule, SkeletonModule, TagModule, AvatarModule, MenuModule, ButtonModule, InputTextModule, MultiSelectModule, InputTextModule],
+  imports: [TableModule, SkeletonModule, TagModule, AvatarModule, MenuModule, ButtonModule, InputTextModule, MultiSelectModule, InputTextModule],
   providers: [WorksQueryPageFacadeService],
   templateUrl: './works-query.html',
   styleUrl: './works-query.css',
@@ -58,25 +56,19 @@ export class WorksQuery implements OnInit{
     menu.toggle(event);
     const itemsAux = [
       {
+        label: 'Ver Facturaciones',
+        icon: 'pi pi-eye',
+        visible: true,
+      },
+      {
         label: 'Editar',
         icon: 'pi pi-pencil',
         visible: true,
-        // visible: await this.canViewEdit(item),
-        // command: () => {
-        //   this.router.navigate([`${SalesRoutes.Root}/${OperationsRoutes.Root}/${OperationsRoutes.Edit}/${item.encryptedId}`], {queryParamsHandling: 'preserve'})
-
-        // },
       },
       {
         label: 'Eliminar',
         icon: 'pi pi-ban',
         visible: true,
-        // command: () => {
-        //   this.openNewStateDropdownDialog(item,`¿Está seguro que quiere anular la Operación N° ${item.code}?`,
-        //     'La Operación se anuló correctamente','Ocurrió un error al anular la Operación',OperationStateTypes.Cancelled);
-        // },
-        // visible: await this.canViewCancel(item),
-
       },
     ];
 

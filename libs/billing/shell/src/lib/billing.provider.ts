@@ -4,6 +4,7 @@ import { provideAuthentication } from "@states/authentication";
 import { billingRoutes } from "./billing.routes";
 import { provideWorksQueryState } from "@states/works-query";
 import { provideWorksNewState } from "@states/works-new";
+import { provideWorksEditState } from "@states/works-edit"
 import { MessageService } from "primeng/api";
 
 export function provideBillingApp() : EnvironmentProviders {
@@ -13,6 +14,7 @@ export function provideBillingApp() : EnvironmentProviders {
     // States
     provideAuthentication(),
     provideWorksQueryState(),
-    provideWorksNewState()
+    provideWorksNewState(),
+    provideWorksEditState()
   ]);
 }

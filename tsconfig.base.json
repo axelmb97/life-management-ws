@@ -36,7 +36,11 @@
       "@shared/components": ["./libs/shared/components/src/index.ts"],
       "@shared/services": ["./libs/shared/services/src/index.ts"],
       "@states/works-new": ["./libs/data-access/states/works-new/src/index.ts"],
-      "@data-access/models": ["./libs/data-access/models/src/index.ts"]
+      "@data-access/models": ["./libs/data-access/models/src/index.ts"],
+      "@states/works-edit": [
+        "./libs/data-access/states/works-edit/src/index.ts"
+      ],
+      "@data-access/mappers": ["./libs/data-access/mappers/src/index.ts"]
     }
   }
 }

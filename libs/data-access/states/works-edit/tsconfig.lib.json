@@ -4,9 +4,10 @@
     "outDir": "../../../../dist/out-tsc",
     "declaration": true,
     "declarationMap": true,
+    "inlineSources": true,
     "types": []
   },
-  "include": ["src/**/*.ts", "../../mappers/src/lib/works/work-view-model.mapper.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts",

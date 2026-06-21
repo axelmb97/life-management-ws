@@ -1,5 +1,5 @@
-import { WorkViewModel } from "./work-view-model";
 import { PaginationHeadersViewModel } from "@shared/models";
+import { WorkViewModel } from "@data-access/models";
 
 export interface WorksQueryState {
   works: WorkViewModel[];
