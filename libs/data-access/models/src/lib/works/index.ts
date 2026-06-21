@@ -1,0 +1,1 @@
+export { type WorkViewModel } from './work-view-model'

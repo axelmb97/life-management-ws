@@ -1,5 +1,5 @@
 import { WorkDtoBillingModel } from "@data-access/apis/billing-api";
-import { WorkViewModel } from "./work-view-model";
+import { WorkViewModel } from "@data-access/models";
 
 export class WorkViewModelMapper {
   static toModel(work: WorkDtoBillingModel): WorkViewModel {

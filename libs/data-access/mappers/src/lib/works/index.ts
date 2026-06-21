@@ -1,0 +1,1 @@
+export { WorkViewModelMapper } from './work-view-model.mapper'

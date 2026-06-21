@@ -4,10 +4,8 @@ import { TableLazyLoadEvent } from "primeng/table";
 import { WorkFiltersViewModel, WorksQueryFacade } from "@states/works-query";
 import { TableFiltersQueryParamHandlerService } from "@shared/services"
 
-@Injectable({
-  providedIn: 'root'
-})
-export class WorksQueryPageFacadeService{
+@Injectable()
+export class WorksQueryPageFacadeService {
   private readonly tableFilterValuesService = inject(TableFiltersQueryParamHandlerService);
   private readonly worksQueryFacade = inject(WorksQueryFacade);
   
