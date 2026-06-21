@@ -1,0 +1,56 @@
+@if (worksEditPageFacadeService.isLoading()) {
+  <app-loader></app-loader>
+}
+
+
+<div class="card">
+  <div class="flex justify-center">
+    <h2 class="text-2xl">Editar Trabajo</h2>
+  </div>
+
+  <form [formGroup]="worksEditPageFacadeService.form()" (ngSubmit)="worksEditPageFacadeService.save()">
+    <div class="flex flex-col gap-6">
+      <div>
+          <label for="name" class="block font-bold mb-3">Nombre</label>
+          <input type="text" pInputText id="name" formControlName="name"  required fluid />
+          <app-input-form-error
+            [control]="worksEditPageFacadeService.form().controls.name"
+            [messages]="worksEditPageFacadeService.formErrors()['name']"
+          ></app-input-form-error>
+      </div>
+
+      <div>
+          <label for="observations" class="block font-bold mb-3">Observaciones</label>
+          <textarea id="observations" pTextarea formControlName="observations" required rows="3" cols="20" fluid></textarea>
+          <app-input-form-error
+            [control]="worksEditPageFacadeService.form().controls.observations"
+            [messages]="worksEditPageFacadeService.formErrors()['observations']"
+          ></app-input-form-error>
+      </div>
+
+      <div class="flex justify-between align-items-center">
+        <div>
+          <button 
+          pButton pRipple type="button"
+          label="Cancelar" class="p-button-text"
+          (click)="worksEditPageFacadeService.goBack()">
+        </button>
+        </div>
+         
+        <div>
+          <button 
+            pButton 
+            pRipple 
+            type="submit"
+            label="Guardar" 
+            class="p-button-success"
+            [disabled]="worksEditPageFacadeService.form().invalid">
+          </button>
+        </div>
+        
+      </div>
+    
+    </div>
+  </form>
+</div>
+

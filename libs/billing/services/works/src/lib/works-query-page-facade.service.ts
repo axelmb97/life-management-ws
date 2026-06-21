@@ -35,7 +35,8 @@ export class WorksQueryPageFacadeService {
       pageSize: normalizedValues['pageSize'] != undefined ? parseInt(normalizedValues['pageSize']) : 10, 
       name: normalizedValues['name'] , 
       observations: normalizedValues['observations'],
-      query: normalizedValues['query']
+      query: normalizedValues['query'],
+      order: 'id desc'
     };
     
     this.worksQueryFacade.getWorksByFilters(filters);
