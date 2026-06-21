@@ -34,7 +34,7 @@ export class WorksEditPageFacadeService implements OnDestroy {
       const isSuccess = this.success();
 
       if (!isSuccess) return;
-      this.globalToastHandlerService.showSuccess({ message: 'Se registro el trabajo correctamente'});
+      this.globalToastHandlerService.showSuccess({ message: 'Se edito el trabajo correctamente'});
       this.goBack();
     });
   }
@@ -44,7 +44,7 @@ export class WorksEditPageFacadeService implements OnDestroy {
       const hasError = this.error() != undefined;
 
       if (!hasError) return;
-      this.globalToastHandlerService.showError({ message: 'No se pudo registrar el trabajo'});
+      this.globalToastHandlerService.showError({ message: 'No se pudo editar el trabajo'});
     });
   }
 
@@ -57,7 +57,7 @@ export class WorksEditPageFacadeService implements OnDestroy {
     this.worksEditFacade.edit();
   }
 
-  goBack() : void {
+  goBack(): void {
     const queryRoute = `${WorksRoutes.Root}/${WorksRoutes.Query}`;
     this.router.navigate([queryRoute]);
   }

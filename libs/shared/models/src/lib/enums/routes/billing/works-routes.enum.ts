@@ -1,5 +1,6 @@
 export enum WorksRoutes {
   Root = 'works',
   Query = 'query',
-  Add = 'add'
+  Add = 'add',
+  Edit = 'edit'
 }

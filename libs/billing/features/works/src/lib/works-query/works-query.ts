@@ -64,6 +64,10 @@ export class WorksQuery implements OnInit{
         label: 'Editar',
         icon: 'pi pi-pencil',
         visible: true,
+        command: () => {
+          const editionRoute = `${WorksRoutes.Root}/${WorksRoutes.Edit}/${item.id}`;
+          this.router.navigate([editionRoute]);
+        }
       },
       {
         label: 'Eliminar',
