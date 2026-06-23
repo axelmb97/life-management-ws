@@ -30,6 +30,10 @@ export interface ApiWorksGetRequestParams {
     ids?: Array<string>;
 }
 
+export interface ApiWorksIdDeleteRequestParams {
+    id: number;
+}
+
 export interface ApiWorksIdGetRequestParams {
     id: number;
 }
@@ -55,6 +59,14 @@ export interface WorksBillingServiceInterface {
 * @param requestParameters
      */
     apiWorksGet(requestParameters: ApiWorksGetRequestParams, extraHttpRequestParams?: any): Observable<Array<WorkDtoBillingModel>>;
+
+    /**
+     * 
+     * 
+     * @endpoint delete /api/works/{id}
+* @param requestParameters
+     */
+    apiWorksIdDelete(requestParameters: ApiWorksIdDeleteRequestParams, extraHttpRequestParams?: any): Observable<boolean>;
 
     /**
      * 

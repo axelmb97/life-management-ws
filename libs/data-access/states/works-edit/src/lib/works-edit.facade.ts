@@ -115,7 +115,9 @@ export class WorksEditFacade {
 
     if (this.worksEditState().selectedWorkId == undefined){
       this.worksEditState.update(state => ({...state, error: 'No hay un id de trabajo seleccionado'}));
+      return;
     }
+    
     this.setIsLoading(true);
     const workData = WorksEditFormMapper.toDomain(this.worksEditState().selectedWorkId!, this.worksEditState().form);
 

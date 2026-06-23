@@ -2,7 +2,7 @@
   <p-table #dt
       [value]="getEntities()"
       [columns]="colsToShow" 
-      [loading]="worksQueryPageFacadeService.isLoading()"
+      [loading]="worksQueryPageFacadeService.areWorksLoading()"
       [lazy]="true"
       (onLazyLoad)="worksQueryPageFacadeService.search($event)"
       [first]="worksQueryPageFacadeService.lazyLoadEvent().first!"
