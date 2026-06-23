@@ -2,13 +2,14 @@ import { inject, Injectable, signal } from "@angular/core";
 import { TableLazyLoadEvent } from "primeng/table";
 
 import { WorkFiltersViewModel, WorksQueryFacade } from "@states/works-query";
-import { TableFiltersQueryParamHandlerService } from "@shared/services"
+import { GlobalToastHandlerService, TableFiltersQueryParamHandlerService } from "@shared/services"
 
 @Injectable()
 export class WorksQueryPageFacadeService {
   private readonly tableFilterValuesService = inject(TableFiltersQueryParamHandlerService);
   private readonly worksQueryFacade = inject(WorksQueryFacade);
-  
+  private readonly globalToastHandlerService = inject(GlobalToastHandlerService);
+
   works = this.worksQueryFacade.works;
   isLoading = this.worksQueryFacade.isLoading;
   isLoaded = this.worksQueryFacade.isLoaded;
@@ -40,5 +41,15 @@ export class WorksQueryPageFacadeService {
     };
     
     this.worksQueryFacade.getWorksByFilters(filters);
+  }
+
+  delete(id?: number){
+
+    if (!id) {
+      this.globalToastHandlerService.showError({ message: "El trabajo seleccionado no contiene un id valido" });
+      return;
+    }
+
+    //TODO: Agregar facade de WorkDeleteFacade
   }
 }

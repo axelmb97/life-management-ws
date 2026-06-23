@@ -13,8 +13,9 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { MenuItem } from 'primeng/api';
-import { WorksRoutes } from '@shared/models';
+import { ConfirmDialogData, WorksRoutes } from '@shared/models';
 import { Router } from '@angular/router';
+import { ConfirmDialogHandlerService } from '@shared/services';
 
 @Component({
   selector: 'billing-works-query',
@@ -25,6 +26,7 @@ import { Router } from '@angular/router';
 })
 export class WorksQuery implements OnInit{
   readonly worksQueryPageFacadeService = inject(WorksQueryPageFacadeService);
+  private readonly confirmationDialogHandler = inject(ConfirmDialogHandlerService);
   private readonly router = inject(Router);
 
   colsToShow: any[] = [
@@ -73,6 +75,14 @@ export class WorksQuery implements OnInit{
         label: 'Eliminar',
         icon: 'pi pi-ban',
         visible: true,
+        command: ()=> {
+          const data = { 
+            message: `¿Desea eliminar el registro: ${item.name}?`,
+            acceptBtnTitle: 'Eliminar',
+            acceptFn: () => this.worksQueryPageFacadeService.delete(item.id)
+          } as ConfirmDialogData;
+          this.confirmationDialogHandler.showDialog(data);
+        }
       },
     ];
 
