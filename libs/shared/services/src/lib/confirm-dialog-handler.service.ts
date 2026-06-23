@@ -1,6 +1,5 @@
 import { inject, Injectable } from "@angular/core";
 import { ConfirmationService } from "primeng/api";
-import { GlobalToastHandlerService } from "./global-toast-handler.service";
 import { ConfirmDialogData } from "@shared/models";
 
 @Injectable({
@@ -8,7 +7,6 @@ import { ConfirmDialogData } from "@shared/models";
 })
 export class ConfirmDialogHandlerService {
   private confirmationService = inject(ConfirmationService);
-  private globalToastHandler = inject(GlobalToastHandlerService);
 
   private DEFAULT_REJECT_BTN_TITLE = 'Cancel';
   private DEFAULT_ACCEPT_BTN_TITLE = 'Aceptar';
@@ -32,12 +30,10 @@ export class ConfirmDialogHandlerService {
   
       accept: () => {
         data.acceptFn();
-        this.globalToastHandler.showSuccess({ message: 'Anda el succes'})
       },
       reject: () => {
         if (!data.rejectFn) return;
         data.rejectFn();
-        this.globalToastHandler.showError({ message: 'Anda el error'})
       }
     });
   }

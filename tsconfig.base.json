@@ -40,7 +40,10 @@
       "@states/works-edit": [
         "./libs/data-access/states/works-edit/src/index.ts"
       ],
-      "@data-access/mappers": ["./libs/data-access/mappers/src/index.ts"]
+      "@data-access/mappers": ["./libs/data-access/mappers/src/index.ts"],
+      "@states/works-delete": [
+        "./libs/data-access/states/works-delete/src/index.ts"
+      ]
     }
   }
 }
