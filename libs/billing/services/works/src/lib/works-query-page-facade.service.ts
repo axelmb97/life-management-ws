@@ -1,4 +1,4 @@
-import { computed, effect, inject, Injectable, signal } from "@angular/core";
+import { computed, effect, inject, Injectable, OnDestroy, signal } from "@angular/core";
 import { TableLazyLoadEvent } from "primeng/table";
 
 import { WorkFiltersViewModel, WorksQueryFacade } from "@states/works-query";
@@ -6,7 +6,8 @@ import { WorksDeleteFacade } from "@states/works-delete";
 import { GlobalToastHandlerService, TableFiltersQueryParamHandlerService } from "@shared/services"
 
 @Injectable()
-export class WorksQueryPageFacadeService {
+export class WorksQueryPageFacadeService implements OnDestroy{
+
   private readonly worksQueryFacade = inject(WorksQueryFacade);
   private readonly worksDeleteFacade = inject(WorksDeleteFacade);
   private readonly tableFilterValuesService = inject(TableFiltersQueryParamHandlerService);
@@ -32,6 +33,12 @@ export class WorksQueryPageFacadeService {
   
   init(): void {
     this.worksQueryFacade.init();
+    this.worksDeleteFacade.init();
+  }
+
+  ngOnDestroy(): void {
+    this.worksQueryFacade.init();
+    this.worksDeleteFacade.init();
   }
 
   private buildDeleteSuccessEffect() {
