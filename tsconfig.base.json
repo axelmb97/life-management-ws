@@ -43,6 +43,9 @@
       "@data-access/mappers": ["./libs/data-access/mappers/src/index.ts"],
       "@states/works-delete": [
         "./libs/data-access/states/works-delete/src/index.ts"
+      ],
+      "@states/billings-query": [
+        "./libs/data-access/states/billings-query/src/index.ts"
       ]
     }
   }

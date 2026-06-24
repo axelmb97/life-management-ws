@@ -1,7 +1,6 @@
-// import { WorksQueryService } from '@data-access/apis/billing-api';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { WorksBillingService } from '@data-access/apis/billing-api';
-import {  delay, finalize, map, } from 'rxjs';
+import { finalize, map, } from 'rxjs';
 import { WorksQueryState } from './models/works-query-state.interface';
 import { WorkViewModelMapper } from '@data-access/mappers';
 import { WorkViewModel } from "@data-access/models";
@@ -16,14 +15,12 @@ export class WorksQueryFacade{
 
   private readonly worksQueryState = signal<WorksQueryState>({
     works: [],
-    filters: { page: 1 },
     error: undefined,
     isLoading: false,
     isLoaded: false,
     pagination: undefined
   });
 
-  readonly filters = computed(() => this.worksQueryState().filters);
   readonly works = computed(() => this.worksQueryState().works);
   readonly error = computed(() => this.worksQueryState().error);
   readonly isLoading = computed(() => this.worksQueryState().isLoading);
@@ -37,7 +34,6 @@ export class WorksQueryFacade{
   private initState() : void {
     this.worksQueryState.set({
       works: [],
-      filters: { page: 1 },
       error: undefined,
       isLoading: false,
       isLoaded: false,
@@ -51,7 +47,6 @@ export class WorksQueryFacade{
     
     this.worksBillingService.apiWorksGet(domainFilters, 'response')
     .pipe(
-      delay(3000),
       finalize(() =>  this.setIsLoading(false)),
       map((response) => {
         const header = response.headers.get('x-pagination');

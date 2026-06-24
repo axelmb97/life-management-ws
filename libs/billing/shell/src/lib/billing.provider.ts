@@ -1,12 +1,14 @@
 import { EnvironmentProviders, makeEnvironmentProviders } from "@angular/core";
 import { provideRouter } from "@angular/router";
-import { provideAuthentication } from "@states/authentication";
+import { ConfirmationService, MessageService } from "primeng/api";
+
 import { billingRoutes } from "./billing.routes";
+import { provideAuthentication } from "@states/authentication";
 import { provideWorksQueryState } from "@states/works-query";
 import { provideWorksNewState } from "@states/works-new";
-import { provideWorksEditState } from "@states/works-edit"
-import { provideWorksDeleteState } from "@states/works-delete"
-import { ConfirmationService, MessageService } from "primeng/api";
+import { provideWorksEditState } from "@states/works-edit";
+import { provideWorksDeleteState } from "@states/works-delete";
+import { provideBillingsQueryState } from "@states/billings-query";
 
 export function provideBillingApp() : EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -18,6 +20,8 @@ export function provideBillingApp() : EnvironmentProviders {
     provideWorksQueryState(),
     provideWorksNewState(),
     provideWorksEditState(),
-    provideWorksDeleteState()
+    provideWorksDeleteState(),
+
+    provideBillingsQueryState(),
   ]);
 }
