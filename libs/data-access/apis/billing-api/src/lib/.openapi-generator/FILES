@@ -3,12 +3,15 @@ README.md
 api.base.service.ts
 api.module.ts
 api/api.ts
+api/billings.service.ts
+api/billings.serviceInterface.ts
 api/works.service.ts
 api/works.serviceInterface.ts
 configuration.ts
 encoder.ts
 git_push.sh
 index.ts
+model/billingDto.ts
 model/models.ts
 model/patchWorkCommand.ts
 model/postWorkCommand.ts
