@@ -46,7 +46,11 @@
       ],
       "@states/billings-query": [
         "./libs/data-access/states/billings-query/src/index.ts"
-      ]
+      ],
+      "@billing/services/billings": [
+        "./libs/billing/services/billings/src/index.ts"
+      ],
+      "@org/billings": ["./libs/billing/features/billings/src/index.ts"]
     }
   }
 }
