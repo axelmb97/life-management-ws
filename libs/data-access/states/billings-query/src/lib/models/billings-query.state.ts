@@ -1,4 +1,4 @@
-import { PaginationHeadersViewModel } from "@shared/models";
+import { PaginationHeadersViewModel } from "@data-access/models";
 import { BillingViewModel } from "@data-access/models";
 
 export interface BillingsQueryState {

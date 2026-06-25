@@ -4,7 +4,7 @@ import { finalize, map, } from 'rxjs';
 import { WorksQueryState } from './models/works-query-state.interface';
 import { WorkViewModelMapper } from '@data-access/mappers';
 import { WorkViewModel } from "@data-access/models";
-import { PaginationHeadersViewModel } from '@shared/models';
+import { PaginationHeadersViewModel } from "@data-access/models";
 import { WorkFiltersViewModel } from './models/work-filters-view-model';
 import { WorkFiltersViewModelMapper } from './models/work-filters-view-model.mapper';
 

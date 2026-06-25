@@ -5,7 +5,7 @@ import { BillingsFiltersViewModel, BillingsQueryFacade } from "@states/billings-
 import { TableLazyLoadEvent } from "primeng/table";
 
 @Injectable()
-export class WorksQueryPageFacadeService implements OnDestroy{
+export class BillingsQueryPageFacadeService implements OnDestroy{
   private readonly billingQueryFacade = inject(BillingsQueryFacade);
   // private readonly worksDeleteFacade = inject(WorksDeleteFacade);
   private readonly tableFilterValuesService = inject(TableFiltersQueryParamHandlerService);

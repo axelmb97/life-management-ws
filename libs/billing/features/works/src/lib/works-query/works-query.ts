@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, inject, OnInit } from '@angular/core';
 import { WorksQueryPageFacadeService } from '@billing/services/works';
 import { WorkViewModel } from '@data-access/models';

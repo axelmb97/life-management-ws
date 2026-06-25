@@ -1,1 +1,1 @@
-export * from './lib/billings/billings';
+export { BillingsQuery } from './lib/billings-query/billings-query'

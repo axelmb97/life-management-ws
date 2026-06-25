@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Billings } from './billings';
+import { BillingsQuery } from './billings-query';
 
-describe('Billings', () => {
-  let component: Billings;
-  let fixture: ComponentFixture<Billings>;
+describe('BillingsQuery', () => {
+  let component: BillingsQuery;
+  let fixture: ComponentFixture<BillingsQuery>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Billings],
+      imports: [BillingsQuery],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Billings);
+    fixture = TestBed.createComponent(BillingsQuery);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

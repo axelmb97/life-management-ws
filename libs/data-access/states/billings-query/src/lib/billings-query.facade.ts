@@ -2,7 +2,7 @@ import { computed, inject, Injectable, signal } from "@angular/core";
 import { BillingsFiltersViewModel, BillingsFiltersViewModelMapper, BillingsQueryState } from "./models";
 import { BillingsBillingService } from "@data-access/apis/billing-api";
 import { finalize, map } from "rxjs";
-import { PaginationHeadersViewModel } from "@shared/models";
+import { PaginationHeadersViewModel } from "@data-access/models";
 import { BillingViewModel } from "@data-access/models";
 import { BillingViewModelMapper } from "@data-access/mappers";
 
