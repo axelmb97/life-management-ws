@@ -1,22 +1,27 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BillingsQueryPageFacadeService } from '@billing/services/billings';
 import { BillingViewModel } from '@data-access/models';
 import { BillingsRoutes, ConfirmDialogData } from '@shared/models';
 import { ConfirmDialogHandlerService } from '@shared/services';
+import { DateFormatterPipe } from "@shared/utils";
 import { MenuItem } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
+import { InputNumber } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { Menu, MenuModule } from 'primeng/menu';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
+import { DatePickerModule } from 'primeng/datepicker';
 
 @Component({
   selector: 'billing-billings-query',
-  imports: [TableModule, SkeletonModule, TagModule, AvatarModule, MenuModule, ButtonModule, InputTextModule, MultiSelectModule, InputTextModule],
+  imports: [TableModule, SkeletonModule, TagModule, AvatarModule, MenuModule, ButtonModule, InputTextModule, MultiSelectModule, InputTextModule, DateFormatterPipe, CurrencyPipe, InputNumber, FormsModule, DatePickerModule],
   templateUrl: './billings-query.html',
   styleUrl: './billings-query.css',
   providers: [BillingsQueryPageFacadeService],

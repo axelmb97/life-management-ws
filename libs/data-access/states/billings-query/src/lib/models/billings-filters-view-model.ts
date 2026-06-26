@@ -7,8 +7,8 @@ export interface BillingsFiltersViewModel {
   observations?: string;
   query?: string;
   workName?: string;
-  receptionDateFrom?: Date;
-  receptionDateTo?: Date;
+  receptionDateFrom?: string;
+  receptionDateTo?: string;
   amountFrom?: number;
   amountTo?: number;
 }

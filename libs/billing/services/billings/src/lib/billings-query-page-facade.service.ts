@@ -1,5 +1,6 @@
 import { computed, inject, Injectable, OnDestroy, signal } from "@angular/core";
-import { GlobalToastHandlerService, TableFiltersQueryParamHandlerService } from "@shared/services";
+import { FilterRangeValue } from "@shared/models";
+import { DatesHandlerService, GlobalToastHandlerService, TableFiltersQueryParamHandlerService } from "@shared/services";
 import { BillingsFiltersViewModel, BillingsQueryFacade } from "@states/billings-query";
 
 import { TableLazyLoadEvent } from "primeng/table";
@@ -10,6 +11,7 @@ export class BillingsQueryPageFacadeService implements OnDestroy{
   // private readonly worksDeleteFacade = inject(WorksDeleteFacade);
   private readonly tableFilterValuesService = inject(TableFiltersQueryParamHandlerService);
   private readonly globalToastHandlerService = inject(GlobalToastHandlerService);
+  private readonly datesHandlerService = inject(DatesHandlerService);
 
   billings = this.billingQueryFacade.billings;
   pagination = this.billingQueryFacade.pagination;
@@ -26,6 +28,9 @@ export class BillingsQueryPageFacadeService implements OnDestroy{
     return this.billingQueryFacade.isLoading(); 
   });
 
+  amountRange = signal<[number | null, number | null]>([null, null]);
+
+
   init(): void {
     this.billingQueryFacade.init();
     // this.worksDeleteFacade.init();
@@ -34,6 +39,18 @@ export class BillingsQueryPageFacadeService implements OnDestroy{
   ngOnDestroy(): void {
     this.billingQueryFacade.init();
     // this.worksDeleteFacade.init();
+  }
+
+  setAmountRangeValue(index: number, amount: number | null) : void {
+    if (index == FilterRangeValue.From) {
+      this.amountRange.set([amount, this.amountRange()[1]]);
+      return;
+    }
+
+    if (index == FilterRangeValue.To) {
+      this.amountRange.set([this.amountRange()[0], amount]);
+      return;
+    }
   }
 
   search(event: TableLazyLoadEvent): void {
@@ -48,7 +65,19 @@ export class BillingsQueryPageFacadeService implements OnDestroy{
       query: normalizedValues['query'],
       order: 'id desc',
       workName: normalizedValues['workName'],
-      //TODO: Faltan filtros de amount y reception date
+      amountFrom: normalizedValues['amount'] != undefined && normalizedValues['amount'][0] != null  
+                  ? Number(normalizedValues['amount'][0]) : undefined,
+      amountTo: normalizedValues['amount'] != undefined && normalizedValues['amount'][1] != null  
+                ? Number(normalizedValues['amount'][1]) : undefined,
+      receptionDateFrom: normalizedValues['receptionDate'] != undefined 
+                          &&  normalizedValues['receptionDate'][0] != null  
+                          ? this.datesHandlerService.convertFromDateISO(normalizedValues['receptionDate'][0])
+                          : undefined,
+      receptionDateTo: normalizedValues['receptionDate'] != undefined
+                        &&  normalizedValues['receptionDate'][1] != null  
+                              ? this.datesHandlerService.convertToDateISO(normalizedValues['receptionDate'][1])
+                              : undefined
+
     };
     
     this.billingQueryFacade.getWorksByFilters(filters);

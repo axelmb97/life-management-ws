@@ -79,24 +79,73 @@
                   }
 
                   @case ('amount') {
-                    <p-columnFilter 
-                        type="text" field="amount" 
-                        display="menu" 
-                        [showOperator]="false"
-                        [showAddButton]="false" 
-                        [showMatchModes]="false" 
-                        [hideOnClear]="true">
-                      </p-columnFilter>
+                    <p-columnFilter
+                    field="amount"
+                    display="menu"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                    [showMatchModes]="false"
+                    [showApplyButton]="false"
+                    [hideOnClear]="true"
+                  >
+                    <ng-template
+                      pTemplate="filter"
+                      let-filter="filterCallback"
+                    >
+                      <div class="flex flex-column gap-2">
+                  
+                        <p-inputNumber
+                          placeholder="Desde"
+                          mode="decimal"
+                          locale="es-AR"
+                          [ngModel]="billingsQueryPageFacadeService.amountRange()[0]"
+                          (ngModelChange)="billingsQueryPageFacadeService.setAmountRangeValue(0, $event)">
+                        </p-inputNumber>
+                  
+                        <p-inputNumber
+                          placeholder="Hasta"
+                          mode="decimal"
+                          locale="es-AR"
+                          [ngModel]="billingsQueryPageFacadeService.amountRange()[1]"
+                          (ngModelChange)="billingsQueryPageFacadeService.setAmountRangeValue(1, $event)">
+                        </p-inputNumber>
+
+                        <button 
+                          pButton pRipple type="button"
+                          label="Aplicar" class="p-button-success"
+                          (click)="filter(billingsQueryPageFacadeService.amountRange())">
+                        </button>
+                  
+                      </div>
+                    </ng-template>
+                  </p-columnFilter>
                   }
 
                   @case ('receptionDate') {
                     <p-columnFilter 
-                        type="text" field="receptionDate" 
+                        field="receptionDate" 
                         display="menu" 
                         [showOperator]="false"
                         [showAddButton]="false" 
                         [showMatchModes]="false" 
                         [hideOnClear]="true">
+                        <ng-template
+                          pTemplate="filter"
+                          let-value
+                          let-filter="filterCallback"
+                          >
+                          <p-datepicker
+                            selectionMode="range"
+                            [readonlyInput]="true"
+                            [showIcon]="true"
+                            [ngModel]="value"
+                            (ngModelChange)="filter($event)"
+                            inputId="range"
+                            dateFormat="dd/mm/yy"
+                            placeholder="Desde - Hasta"
+                          >
+                          </p-datepicker>
+                        </ng-template>
                       </p-columnFilter>
                   }
                 }
@@ -122,6 +171,18 @@
 
                 @case ('observations') {
                   <td>{{item[col.field] ?? '-'}}</td>
+                }
+
+                @case ('workName') {
+                  <td>{{item[col.field] ?? '-'}}</td>
+                }
+
+                @case ('amount') {
+                  <td>{{item[col.field] | currency:'ARS':'symbol':'1.2-2' }}</td>
+                }
+
+                @case ('receptionDate') {
+                  <td>{{item[col.field] | dateFormatter}}</td>
                 }
 
                 @default {

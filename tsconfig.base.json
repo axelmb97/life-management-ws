@@ -50,7 +50,10 @@
       "@billing/services/billings": [
         "./libs/billing/services/billings/src/index.ts"
       ],
-      "@billing/features/billings": ["./libs/billing/features/billings/src/index.ts"]
+      "@billing/features/billings": [
+        "./libs/billing/features/billings/src/index.ts"
+      ],
+      "@shared/utils": ["./libs/shared/utils/src/index.ts"]
     }
   }
 }

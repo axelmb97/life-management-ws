@@ -1,0 +1,1 @@
+export { DateFormatterPipe } from './date-formater.pipe';

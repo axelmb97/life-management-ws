@@ -12,9 +12,8 @@ export class BillingsFiltersViewModelMapper {
       name: filters.name,
       observations: filters.observations,
       workName: filters.workName,
-      //TODO: Ver como enviar correctamente la fecha
-      // receptionDateFrom: filters.receptionDateFrom,
-      // receptionDateTo: filters.receptionDateTo,
+      receptionDateFrom: filters.receptionDateFrom,
+      receptionDateTo: filters.receptionDateTo,
       amountFrom: filters.amountFrom,
       amountTo: filters.amountTo
     };
