@@ -12,6 +12,7 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { BillingDtoBillingModel } from '../model/models';
+import { CreateBillingCommandBillingModel } from '../model/models';
 import { ProblemDetailsBillingModel } from '../model/models';
 
 
@@ -33,6 +34,10 @@ export interface ApiBillingsGetRequestParams {
     ids?: Array<string>;
 }
 
+export interface ApiBillingsPostRequestParams {
+    createBillingCommandBillingModel?: CreateBillingCommandBillingModel;
+}
+
 
 export interface BillingsBillingServiceInterface {
     defaultHeaders: HttpHeaders;
@@ -45,5 +50,13 @@ export interface BillingsBillingServiceInterface {
 * @param requestParameters
      */
     apiBillingsGet(requestParameters: ApiBillingsGetRequestParams, extraHttpRequestParams?: any): Observable<Array<BillingDtoBillingModel>>;
+
+    /**
+     * 
+     * 
+     * @endpoint post /api/billings
+* @param requestParameters
+     */
+    apiBillingsPost(requestParameters: ApiBillingsPostRequestParams, extraHttpRequestParams?: any): Observable<BillingDtoBillingModel>;
 
 }
