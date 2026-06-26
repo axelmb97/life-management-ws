@@ -8,6 +8,7 @@ import Aura from '@primeng/themes/aura';
 import {  provideBillingApp } from '@billing/shell';
 import { provideBillingApi } from '@data-access/apis/billing-api';
 import { environment } from '../environments/environment';
+import { LOCALE_ID } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,9 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
       },
     }),
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-AR'
+    }
   ],
 };

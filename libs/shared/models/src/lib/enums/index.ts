@@ -1,2 +1,2 @@
 export * from './routes/index';
-export { AppFormError } from './form-error.enum'
+export { FilterRangeValue } from './filter-range-value.enum'

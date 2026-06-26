@@ -1,0 +1,1 @@
+export { type PaginationHeadersViewModel } from './pagination-headers';

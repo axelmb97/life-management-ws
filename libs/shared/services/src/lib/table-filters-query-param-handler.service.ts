@@ -31,7 +31,16 @@ export class TableFiltersQueryParamHandlerService {
       if (Array.isArray(paramValue) && paramValue[0].value == null) return;
 
       if (Array.isArray(paramValue) && paramValue[0].value != null) {
-        params[key] = paramValue[0].value;
+        let value = paramValue[0].value;
+
+        if (Array.isArray(paramValue[0].value) && paramValue[0].value.some(v => v instanceof Date)) {
+          value = paramValue[0].value.map( v => {
+            if (v == null || !(v instanceof Date)) return v;
+            return v.toISOString();
+          })
+        }
+
+        params[key] = value;
         return;
       }
 

@@ -43,7 +43,17 @@
       "@data-access/mappers": ["./libs/data-access/mappers/src/index.ts"],
       "@states/works-delete": [
         "./libs/data-access/states/works-delete/src/index.ts"
-      ]
+      ],
+      "@states/billings-query": [
+        "./libs/data-access/states/billings-query/src/index.ts"
+      ],
+      "@billing/services/billings": [
+        "./libs/billing/services/billings/src/index.ts"
+      ],
+      "@billing/features/billings": [
+        "./libs/billing/features/billings/src/index.ts"
+      ],
+      "@shared/utils": ["./libs/shared/utils/src/index.ts"]
     }
   }
 }
