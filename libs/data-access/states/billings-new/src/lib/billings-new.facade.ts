@@ -57,7 +57,7 @@ export class BillingsNewFacade {
         required: 'El trabajo es obligatorio'
       },
       amount: {
-        required: 'La importe es obligatorio',
+        required: 'El importe es obligatorio',
         min: 'El importe debe ser mayor a cero'
       }
     };
