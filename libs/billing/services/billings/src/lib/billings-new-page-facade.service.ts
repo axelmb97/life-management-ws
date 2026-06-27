@@ -18,6 +18,7 @@ export class BillingsNewPageFacadeService implements OnDestroy{
   
   readonly works = this.worksQueryFacade.works;
   readonly areWorksLoading = this.worksQueryFacade.isLoading;
+  private readonly worksLoadingErrorEffect = this.buildWorksErrorEffect();
 
   readonly isLoading = computed(() => {
     return this.billingsNewFacade.isLoading() || this.worksQueryFacade.isLoading();
@@ -59,6 +60,18 @@ export class BillingsNewPageFacadeService implements OnDestroy{
 
       if (!hasError) return;
       this.globalToastHandlerService.showError({ message: 'No se pudo registrar la facturación'});
+    });
+  }
+
+  private buildWorksErrorEffect() {
+    return effect(() => {
+      const hasError = this.worksQueryFacade.error() != undefined;
+
+      if (!hasError) return;
+
+      this.globalToastHandlerService.showError({ message: 'No se pudieron cargar los trabajos. Intente de nuevo.'});
+
+      this.goBack();
     });
   }
 

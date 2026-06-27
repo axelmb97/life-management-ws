@@ -47,7 +47,6 @@ export class BillingsNewFacade {
         maxlength: 'El nombre no puede tener mas de 50 caracteres'
       },
       observations: {
-        required: 'La observación es obligatoria',
         minlength: 'La observación debe tener al menos 3 caracteres',
         maxlength: 'La observación no puede tener mas de 100 caracteres'
       },
@@ -67,7 +66,7 @@ export class BillingsNewFacade {
   private buildForm() : FormGroup<BillingsNewForm> {
     return this.builder.group({
       name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      observations: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      observations: ["", [Validators.minLength(3), Validators.maxLength(100)]],
       receptionDate: [new Date(), [Validators.required]],
       receptionDateFormatted: [""],
       workId: [null as number | null , [Validators.required]],
