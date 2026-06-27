@@ -12,6 +12,7 @@ encoder.ts
 git_push.sh
 index.ts
 model/billingDto.ts
+model/createBillingCommand.ts
 model/models.ts
 model/patchWorkCommand.ts
 model/postWorkCommand.ts

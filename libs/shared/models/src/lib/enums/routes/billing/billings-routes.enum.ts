@@ -1,6 +1,6 @@
 export enum BillingsRoutes {
   Root = 'billings',
   Query = 'query',
-  Add = 'add',
+  New = 'new',
   Edit = 'edit'
 }

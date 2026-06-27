@@ -1,0 +1,110 @@
+@if (billingsNewPageFacadeService.isLoading() ) {
+  <app-loader></app-loader>
+} @else {
+  <div class="card">
+    <div class="flex justify-center">
+      <h2 class="text-2xl">Registrar Facturación</h2>
+    </div>
+  
+    <form [formGroup]="billingsNewPageFacadeService.form()" (ngSubmit)="billingsNewPageFacadeService.save()">
+      <div class="flex flex-col gap-6">
+        <div>
+          <label for="name" class="block font-bold mb-3">Trabajo</label>
+          <p-select 
+            [options]="billingsNewPageFacadeService.works()" 
+            formControlName="workId" 
+            optionLabel="name" 
+            optionValue="id"
+            placeholder="Seleccione un trabajo" 
+            class="w-full" />
+  
+          <app-input-form-error
+          [control]="billingsNewPageFacadeService.form().controls.workId"
+          [messages]="billingsNewPageFacadeService.formErrors()['workId']"
+          ></app-input-form-error>
+        </div>
+  
+        <div>
+            <label for="name" class="block font-bold mb-3">Nombre</label>
+            <input class="w-full"  type="text" pInputText id="name" formControlName="name"/>
+            <app-input-form-error
+              [control]="billingsNewPageFacadeService.form().controls.name"
+              [messages]="billingsNewPageFacadeService.formErrors()['name']"
+            ></app-input-form-error>
+        </div>
+  
+        <div>
+            <label for="observations" class="block font-bold mb-3">Observaciones</label>
+            <textarea class="w-full"  id="observations" pTextarea formControlName="observations" rows="3" cols="20"></textarea>
+            <app-input-form-error
+              [control]="billingsNewPageFacadeService.form().controls.observations"
+              [messages]="billingsNewPageFacadeService.formErrors()['observations']"
+            ></app-input-form-error>
+        </div>
+  
+        <div>
+          <label for="receptionDate" class="block font-bold mb-3">Fecha de Pago</label>
+          <p-datepicker
+            [readonlyInput]="true"
+            [showIcon]="true"
+            (onSelect)="billingsNewPageFacadeService.onDateSelect($event)"
+            formControlName="receptionDate"
+            dateFormat="dd/mm/yy"
+            placeholder="Seleccione fecha"
+            class="w-full" 
+            >
+          </p-datepicker>
+          <app-input-form-error
+            [control]="billingsNewPageFacadeService.form().controls.receptionDate"
+            [messages]="billingsNewPageFacadeService.formErrors()['receptionDate']"
+          ></app-input-form-error>
+      </div>
+  
+      <div>
+        <label class="block font-bold mb-3" for="amount">Importe</label>
+        <p-inputnumber 
+          formControlName="amount" 
+          inputId="amount" 
+          mode="currency" 
+          currency="ARS" 
+          locale="es-AR" 
+          [minFractionDigits]="0" [maxFractionDigits]="2"
+          class="w-full"  
+          />
+  
+          <app-input-form-error
+          [control]="billingsNewPageFacadeService.form().controls.amount"
+          [messages]="billingsNewPageFacadeService.formErrors()['amount']"
+          ></app-input-form-error>
+      </div>
+  
+        <div class="flex justify-between align-items-center">
+          <div>
+            <button 
+            pButton pRipple type="button"
+            label="Cancelar" class="p-button-text"
+            (click)="billingsNewPageFacadeService.goBack()">
+          </button>
+          </div>
+           
+          <div>
+            <button 
+              pButton 
+              pRipple 
+              type="submit"
+              label="Guardar" 
+              class="p-button-success"
+              [disabled]="billingsNewPageFacadeService.form().invalid">
+            </button>
+          </div>
+          
+        </div>
+      
+      </div>
+    </form>
+  </div>
+}
+
+
+
+

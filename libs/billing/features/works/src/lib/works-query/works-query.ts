@@ -49,7 +49,7 @@ export class WorksQuery implements OnInit{
   }
 
   navigateToCreation(): void {
-    const route =  `${WorksRoutes.Root}/${WorksRoutes.Add}`;
+    const route =  `${WorksRoutes.Root}/${WorksRoutes.New}`;
     this.router.navigate([route]);
   }
 
