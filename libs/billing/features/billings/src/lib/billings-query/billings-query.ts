@@ -56,7 +56,7 @@ export class BillingsQuery {
   }
 
   navigateToCreation(): void {
-    const route =  `${BillingsRoutes.Root}/${BillingsRoutes.Add}`;
+    const route =  `${BillingsRoutes.Root}/${BillingsRoutes.New}`;
     this.router.navigate([route]);
   }
 

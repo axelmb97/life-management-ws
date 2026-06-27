@@ -8,7 +8,7 @@ export class BillingsNewFormMapper {
       createBillingCommandBillingModel: {
         name: form.get('name')?.value,
         observations: form.get('observations')?.value ?? null,
-        receptionDate: form.get('receptionDate')?.value ?? undefined,
+        receptionDate: form.get('receptionDateFormatted')?.value ?? undefined,
         workId: form.get('workId')?.value ?? undefined,
         amount: form.get('amount')?.value ?? undefined
       }

@@ -68,17 +68,18 @@ export class BillingsNewFacade {
     return this.builder.group({
       name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       observations: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      receptionDate: ["", [Validators.required]],
-      workId: [0 , [Validators.required]],
+      receptionDate: [new Date(), [Validators.required]],
+      receptionDateFormatted: [""],
+      workId: [null as number | null , [Validators.required]],
       amount: [0, [Validators.required, Validators.min(1)]]
     });
   }
 
   save(): void {
     this.setIsLoading(true);
-    const billings = BillingsNewFormMapper.toDomain(this.billingsNewState().form);
+    const billing = BillingsNewFormMapper.toDomain(this.billingsNewState().form);
 
-    this.billingsBillingService.apiBillingsPost(billings)
+    this.billingsBillingService.apiBillingsPost(billing)
     .pipe(
       finalize(() => this.setIsLoading(false))
     )
