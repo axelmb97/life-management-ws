@@ -76,14 +76,15 @@ export class BillingsQuery {
         label: 'Eliminar',
         icon: 'pi pi-ban',
         visible: true,
-        // command: ()=> {
-        //   const data = { 
-        //     message: `¿Desea eliminar el registro: ${item.name}?`,
-        //     acceptBtnTitle: 'Eliminar',
-        //     acceptFn: () => this.billingsQueryPageFacadeService.delete(item.id)
-        //   } as ConfirmDialogData;
-        //   this.confirmationDialogHandler.showDialog(data);
-        // }
+        command: ()=> {
+          const data = { 
+            title: 'Eliminar Facturación',
+            message: `¿Desea eliminar el registro: ${item.name}?`,
+            acceptBtnTitle: 'Eliminar',
+            acceptFn: () => this.billingsQueryPageFacadeService.delete(item.id)
+          } as ConfirmDialogData;
+          this.confirmationDialogHandler.showDialog(data);
+        }
       },
     ];
 
