@@ -33,7 +33,8 @@ export class BillingsEditPageFacadeService implements OnDestroy {
   init(billingId: number) : void {
     this.billingsEditFacade.init();
     this.worksQueryFacade.init()
-    
+
+    this.worksQueryFacade.getWorksByFilters({});
     this.billingsEditFacade.setSelectedBilling(billingId);
   }
 

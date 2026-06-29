@@ -120,7 +120,7 @@ export class BillingsEditFacade {
       name: billing.name ?? null,
       observations: billing.observations ?? null,
       receptionDate: billing.receptionDate ? new Date(billing.receptionDate) : new Date(),
-      workId: 1, //TODO: Cambiar el back para que devuelva el id del trabajo
+      workId: billing.workId ?? null, 
       amount: billing.amount ?? null
     });
 

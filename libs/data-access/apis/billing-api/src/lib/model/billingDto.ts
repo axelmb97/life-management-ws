@@ -16,5 +16,6 @@ export interface BillingDtoBillingModel {
     receptionDate?: string;
     amount?: number;
     workName?: string | null;
+    workId?: number;
 }
 

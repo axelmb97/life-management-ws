@@ -7,6 +7,7 @@ export class BillingViewModelMapper {
       id: billing.id,
       name: billing.name,
       observations: billing.observations,
+      workId: billing.workId,
       workName: billing.workName,
       receptionDate: billing.receptionDate,
       amount: billing.amount
