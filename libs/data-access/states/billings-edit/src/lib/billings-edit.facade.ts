@@ -107,7 +107,7 @@ export class BillingsEditFacade {
           ...state,
           works: [],
           error: error,
-          selectedWorkId: undefined,
+          selectedBillingId: undefined,
           pagination: undefined,
           isLoaded: false
         }));
