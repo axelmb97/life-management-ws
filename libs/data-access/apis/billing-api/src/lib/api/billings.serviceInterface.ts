@@ -13,6 +13,7 @@ import { Observable }                                        from 'rxjs';
 
 import { BillingDtoBillingModel } from '../model/models';
 import { CreateBillingCommandBillingModel } from '../model/models';
+import { PatchBillingCommandBillingModel } from '../model/models';
 import { ProblemDetailsBillingModel } from '../model/models';
 
 
@@ -34,6 +35,19 @@ export interface ApiBillingsGetRequestParams {
     ids?: Array<string>;
 }
 
+export interface ApiBillingsIdDeleteRequestParams {
+    id: number;
+}
+
+export interface ApiBillingsIdGetRequestParams {
+    id: number;
+}
+
+export interface ApiBillingsIdPatchRequestParams {
+    id: number;
+    patchBillingCommandBillingModel?: PatchBillingCommandBillingModel;
+}
+
 export interface ApiBillingsPostRequestParams {
     createBillingCommandBillingModel?: CreateBillingCommandBillingModel;
 }
@@ -50,6 +64,30 @@ export interface BillingsBillingServiceInterface {
 * @param requestParameters
      */
     apiBillingsGet(requestParameters: ApiBillingsGetRequestParams, extraHttpRequestParams?: any): Observable<Array<BillingDtoBillingModel>>;
+
+    /**
+     * 
+     * 
+     * @endpoint delete /api/billings/{id}
+* @param requestParameters
+     */
+    apiBillingsIdDelete(requestParameters: ApiBillingsIdDeleteRequestParams, extraHttpRequestParams?: any): Observable<boolean>;
+
+    /**
+     * 
+     * 
+     * @endpoint get /api/billings/{id}
+* @param requestParameters
+     */
+    apiBillingsIdGet(requestParameters: ApiBillingsIdGetRequestParams, extraHttpRequestParams?: any): Observable<BillingDtoBillingModel>;
+
+    /**
+     * 
+     * 
+     * @endpoint patch /api/billings/{id}
+* @param requestParameters
+     */
+    apiBillingsIdPatch(requestParameters: ApiBillingsIdPatchRequestParams, extraHttpRequestParams?: any): Observable<BillingDtoBillingModel>;
 
     /**
      * 

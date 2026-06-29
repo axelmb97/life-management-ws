@@ -9,13 +9,12 @@
  */
 
 
-export interface BillingDtoBillingModel { 
+export interface PatchBillingCommandBillingModel { 
     id?: number;
     name?: string | null;
     observations?: string | null;
-    receptionDate?: string;
-    amount?: number;
-    workName?: string | null;
-    workId?: number;
+    receptionDate?: string | null;
+    workId?: number | null;
+    amount?: number | null;
 }
 

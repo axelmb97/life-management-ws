@@ -56,6 +56,12 @@
       "@shared/utils": ["./libs/shared/utils/src/index.ts"],
       "@states/billings-new": [
         "./libs/data-access/states/billings-new/src/index.ts"
+      ],
+      "@states/billings-delete": [
+        "./libs/data-access/states/billings-delete/src/index.ts"
+      ],
+      "@states/billings-edit": [
+        "./libs/data-access/states/billings-edit/src/index.ts"
       ]
     }
   }

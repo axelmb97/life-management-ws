@@ -4,7 +4,7 @@ import { Login } from "@shared/features/auth";
 import { AppMain } from "@shared/layouts";
 import { BaseRoutes, BillingsRoutes, WorksRoutes } from "@shared/models";
 import { WorksEdit, WorksNew, WorksQuery } from "@billing/features/works";
-import { BillingsNew, BillingsQuery } from "@billing/features/billings";
+import { BillingsEdit, BillingsNew, BillingsQuery } from "@billing/features/billings";
 
 export const billingRoutes: Routes = [
   {
@@ -17,6 +17,7 @@ export const billingRoutes: Routes = [
 
       { path: `${BillingsRoutes.Root}/${BillingsRoutes.Query}`, component: BillingsQuery },
       { path: `${BillingsRoutes.Root}/${BillingsRoutes.New}`, component: BillingsNew },
+      { path: `${BillingsRoutes.Root}/${BillingsRoutes.Edit}/:id`, component: BillingsEdit },
     ]
   },
   { path: BaseRoutes.Login, component: Login },

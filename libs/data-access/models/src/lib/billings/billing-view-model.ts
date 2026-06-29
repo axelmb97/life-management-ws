@@ -5,4 +5,5 @@ export interface BillingViewModel {
   receptionDate?: string;
   amount?: number;
   workName?: string | null;
+  workId?: number;
 }

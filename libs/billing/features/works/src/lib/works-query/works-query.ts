@@ -76,6 +76,7 @@ export class WorksQuery implements OnInit{
         visible: true,
         command: ()=> {
           const data = { 
+            title: 'Eliminar Trabajo',
             message: `¿Desea eliminar el registro: ${item.name}?`,
             acceptBtnTitle: 'Eliminar',
             acceptFn: () => this.worksQueryPageFacadeService.delete(item.id)

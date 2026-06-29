@@ -14,6 +14,7 @@ index.ts
 model/billingDto.ts
 model/createBillingCommand.ts
 model/models.ts
+model/patchBillingCommand.ts
 model/patchWorkCommand.ts
 model/postWorkCommand.ts
 model/problemDetails.ts

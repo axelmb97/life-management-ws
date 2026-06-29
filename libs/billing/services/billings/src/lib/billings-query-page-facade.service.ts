@@ -1,14 +1,14 @@
-import { computed, inject, Injectable, OnDestroy, signal } from "@angular/core";
+import { computed, effect, inject, Injectable, OnDestroy, signal } from "@angular/core";
 import { FilterRangeValue } from "@shared/models";
 import { DatesHandlerService, GlobalToastHandlerService, TableFiltersQueryParamHandlerService } from "@shared/services";
 import { BillingsFiltersViewModel, BillingsQueryFacade } from "@states/billings-query";
-
+import { BillingsDeleteFacade } from "@states/billings-delete";
 import { TableLazyLoadEvent } from "primeng/table";
 
 @Injectable()
 export class BillingsQueryPageFacadeService implements OnDestroy{
   private readonly billingQueryFacade = inject(BillingsQueryFacade);
-  // private readonly worksDeleteFacade = inject(WorksDeleteFacade);
+  private readonly billingsDeleteFacade = inject(BillingsDeleteFacade);
   private readonly tableFilterValuesService = inject(TableFiltersQueryParamHandlerService);
   private readonly globalToastHandlerService = inject(GlobalToastHandlerService);
   private readonly datesHandlerService = inject(DatesHandlerService);
@@ -25,20 +25,41 @@ export class BillingsQueryPageFacadeService implements OnDestroy{
   });
 
   areWorksLoading = computed(() => {
-    return this.billingQueryFacade.isLoading(); 
+    return this.billingQueryFacade.isLoading() || this.billingsDeleteFacade.isLoading(); 
   });
 
   amountRange = signal<[number | null, number | null]>([null, null]);
 
+  private readonly deleteSuccessEffect = this.buildDeleteSuccessEffect();
+  private readonly deleteErrorEffect = this.buildDeleteErrorEffect();
 
   init(): void {
     this.billingQueryFacade.init();
-    // this.worksDeleteFacade.init();
+    this.billingsDeleteFacade.init();
   }
 
   ngOnDestroy(): void {
     this.billingQueryFacade.init();
-    // this.worksDeleteFacade.init();
+    this.billingsDeleteFacade.init();
+  }
+
+  private buildDeleteSuccessEffect() {
+    return effect(() => {
+      const isSuccess = this.billingsDeleteFacade.success();
+
+      if (!isSuccess) return;
+      this.globalToastHandlerService.showSuccess({ message: 'Se elimino la facturación correctamente'});
+      this.search(this.lazyLoadEvent());
+    });
+  }
+
+  private buildDeleteErrorEffect() {
+    return effect(() => {
+      const hasError = this.billingsDeleteFacade.error() != undefined;
+
+      if (!hasError) return;
+      this.globalToastHandlerService.showError({ message: 'No se pudo eliminar la facturación'});
+    });
   }
 
   setAmountRangeValue(index: number, amount: number | null) : void {
@@ -81,5 +102,15 @@ export class BillingsQueryPageFacadeService implements OnDestroy{
     };
     
     this.billingQueryFacade.getWorksByFilters(filters);
+  }
+
+  delete(billingId?: number) : void {
+    
+    if (!billingId) {
+      this.globalToastHandlerService.showError({ message: "La facturación seleccionada no contiene un id válido" });
+      return;
+    }
+
+    this.billingsDeleteFacade.delete(billingId);
   }
 }

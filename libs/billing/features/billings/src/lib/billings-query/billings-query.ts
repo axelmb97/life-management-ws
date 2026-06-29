@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BillingsQueryPageFacadeService } from '@billing/services/billings';
@@ -27,7 +27,7 @@ import { DatePickerModule } from 'primeng/datepicker';
   providers: [BillingsQueryPageFacadeService],
   standalone: true,
 })
-export class BillingsQuery {
+export class BillingsQuery implements OnInit{
   readonly billingsQueryPageFacadeService = inject(BillingsQueryPageFacadeService);
   private readonly confirmationDialogHandler = inject(ConfirmDialogHandlerService);
   private readonly router = inject(Router);
@@ -76,14 +76,15 @@ export class BillingsQuery {
         label: 'Eliminar',
         icon: 'pi pi-ban',
         visible: true,
-        // command: ()=> {
-        //   const data = { 
-        //     message: `¿Desea eliminar el registro: ${item.name}?`,
-        //     acceptBtnTitle: 'Eliminar',
-        //     acceptFn: () => this.billingsQueryPageFacadeService.delete(item.id)
-        //   } as ConfirmDialogData;
-        //   this.confirmationDialogHandler.showDialog(data);
-        // }
+        command: ()=> {
+          const data = { 
+            title: 'Eliminar Facturación',
+            message: `¿Desea eliminar el registro: ${item.name}?`,
+            acceptBtnTitle: 'Eliminar',
+            acceptFn: () => this.billingsQueryPageFacadeService.delete(item.id)
+          } as ConfirmDialogData;
+          this.confirmationDialogHandler.showDialog(data);
+        }
       },
     ];
 

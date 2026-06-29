@@ -1,6 +1,6 @@
 {
   "name": "@data-access/apis/billing-api",
-  "version": "1.0.0+fe37a3a7b053051e2737f76e03694861da92530f - Microsoft.AspNetCore.Hosting.HostingEnvironment",
+  "version": "1.0.0+6afd9c9899364c49fc74809bc23a4a038135deaa - Microsoft.AspNetCore.Hosting.HostingEnvironment",
   "description": "OpenAPI client for @data-access/apis/billing-api",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
