@@ -823,6 +823,10 @@
           "workName": {
             "type": "string",
             "nullable": true
+          },
+          "workId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

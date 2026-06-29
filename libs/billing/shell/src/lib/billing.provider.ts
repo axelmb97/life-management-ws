@@ -11,6 +11,7 @@ import { provideWorksDeleteState } from "@states/works-delete";
 import { provideBillingsQueryState } from "@states/billings-query";
 import { provideBillingsNewState } from "@states/billings-new";
 import { provideBillingsDeleteState } from  "@states/billings-delete";
+import { provideBillingsEditState } from "@states/billings-edit";
 
 export function provideBillingApp() : EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -26,6 +27,7 @@ export function provideBillingApp() : EnvironmentProviders {
 
     provideBillingsQueryState(),
     provideBillingsNewState(),
-    provideBillingsDeleteState()
+    provideBillingsDeleteState(),
+    provideBillingsEditState()
   ]);
 }
